@@ -67,10 +67,10 @@ def deal_card():
   chosen_card= random.choice(cards)
   return chosen_card
 def calculate_score(cards):
-  if
+  if cards 
 
 user_cards =[]
-computer_cards = []
+computer_cards = [] 
 for _ in range(2):
   user_cards.append(deal_card())
   computer_cards.append(deal_card())
