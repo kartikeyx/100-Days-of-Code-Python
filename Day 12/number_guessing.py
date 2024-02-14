@@ -3,17 +3,24 @@ from art import logo
 
 HARD_TURNS = 5
 EASY_TURNS = 10
-
-def gu():
-  num = random.randint(1, 100)
-  guess= int(input("Make a guess: "))
-  if guess==num:
-    print("YOU WIN")
+turns = 0
+def check_answer(guess, answer, turns):
+  
+  if guess<answer:
+    print("TOO LOW")
+    return turns - 1
+    
+  
+  elif guess>answer:
+    print("TOO HIGH")
+    return turns - 1
+    
+  
   else:
-    if guess>num:
-      print("TOO HIGH")
+    print(f"YOU GOT IT. THE ANSWER WAS {answer}")
 
-def difficulty_turns(difficulty):
+def difficulty_turns():
+  difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
   if difficulty == "hard":
     return HARD_TURNS
   else:
@@ -23,9 +30,20 @@ def difficulty_turns(difficulty):
 def game():
   print(logo)
   print("Welcome to the Number Guessing Game!\nI'm thinking of a number between 1 and 100.")
-  difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
-  difficulty_turns(difficulty)
   
+  turns=difficulty_turns()
+  print(f"You have {turns} attempts remaining to guess the number.")
+  num = random.randint(1, 100)
+  guess = 0
+  while guess!=num :
+    print(f"You have {turns} attempts remaining to guess the number.")
+    guess= int(input("Make a guess: "))
+    turns = check_answer(guess, num, turns)
+    if turns == 0:
+      print("YOU RAN OUT OF TURNS")
+      return 
+    
 
 
 
+game()
