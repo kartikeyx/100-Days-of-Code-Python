@@ -14,6 +14,7 @@ class Scoreboard(Turtle):
     self.upd()
     
   def upd(self):
+    self.clear()
     self.write(f"Level = {self.score}", align = ALIGNMENT , font = FONT)
 
   def game_over(self):
@@ -22,5 +23,4 @@ class Scoreboard(Turtle):
 
   def inc(self):
     self.score +=1
-    self.clear()
     self.upd()
